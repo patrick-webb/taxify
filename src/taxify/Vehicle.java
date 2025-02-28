@@ -1,5 +1,6 @@
 package taxify;
 
+
 public abstract class Vehicle implements IVehicle {
     private int id;
     private ITaxiCompany company;
@@ -103,13 +104,15 @@ public abstract class Vehicle implements IVehicle {
     public void notifyArrivalAtPickupLocation() {
         // notify the company that the vehicle is at the pickup location and start the service
         this.company.arrivedAtPickupLocation(this);
-        this.service 
+        this.startService();
+    
     }
         
     @Override
     public void notifyArrivalAtDropoffLocation() {
         // notify the company that the vehicle is at the drop off location and end the service
         this.company.arrivedAtDropoffLocation(this);
+        this.endService();
      }
         
     @Override
