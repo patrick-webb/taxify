@@ -38,7 +38,7 @@ public class TestProgram {
             userList.add(user);
         }
 
-        for (int i = 0; i < vehicleAmount; i++)
+        for (int i = 1; i <= vehicleAmount; i++)
         {
             ILocation location = ApplicationLibrary.randomLocation();
 
@@ -61,6 +61,8 @@ public class TestProgram {
             
         while (sim.getTotalServices() > 0)
         {
+            int totalServices = sim.getTotalServices();
+
             if (random.nextInt(100) < 25)
                 sim.requestService();
 

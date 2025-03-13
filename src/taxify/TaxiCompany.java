@@ -121,10 +121,11 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     
     private int findFreeVehicle() {
         // returns the index of a free vehicle in this.vehicles
-        for (IVehicle vehicle : this.vehicles)
+
+        for (int i = 0; i < this.vehicles.size(); i++)
         {
-            if (vehicle.isFree())
-                return vehicle.getId();
+            if (this.vehicles.get(i).isFree())
+                return i;
         }
 
         return -1;
