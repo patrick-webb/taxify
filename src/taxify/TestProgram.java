@@ -1,11 +1,9 @@
-package taxify.application;
+package taxify;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import taxify.application.ApplicationLibrary;
 
 public class TestProgram {
 
@@ -33,10 +31,11 @@ public class TestProgram {
             else
                 gender = 'f';
 
+            LocalDate date;
             if (ApplicationLibrary.rand() % 3 == 0)
-                LocalDate date  = LocalDate.ofYearDay(2010, 30);
+                date  = LocalDate.ofYearDay(2010, 30);
             else
-                LocalDate date = LocalDate.ofYearDay(2000, 30);
+                date = LocalDate.ofYearDay(2000, 30);
 
             IUser user = new User(i, firstName, lastName, gender, date);
             userList.add(user);
@@ -50,7 +49,10 @@ public class TestProgram {
             if (i % 2 == 0)
                 gender = 'm';
             else
-            IDriver driver = new Driver(firstNames[random.nextInt(10)], lastNames[random.nextInt(10)], gender, random.next(10));
+                gender = 'f';
+
+            LocalDate date = LocalDate.ofYearDay(2000, 30);
+            IDriver driver = new Driver(firstNames[random.nextInt(10)], lastNames[random.nextInt(10)], gender, date,  random.nextInt(10));
 
             IVehicle vehicle;
 

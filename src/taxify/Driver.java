@@ -1,8 +1,6 @@
-package taxify.functionality;
+package taxify;
 
 import java.time.LocalDate;
-
-import taxify.interfaces.IVehicle;
 
 public class Driver implements IDriver {
     private String firstName;
@@ -28,7 +26,7 @@ public class Driver implements IDriver {
 
     public String getLastName()
     {
-        return this.lastName();
+        return this.lastName;
     }
 
     public char getGender()
@@ -44,6 +42,11 @@ public class Driver implements IDriver {
     public int getYearsOfExperience()
     {
         return this.yearsOfExperience;
+    }
+
+    public IVehicle getVehicle()
+    {
+        return this.vehicle;
     }
 
     public double getRating()

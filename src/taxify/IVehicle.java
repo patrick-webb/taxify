@@ -1,4 +1,4 @@
-package taxify.interfaces;
+package taxify;
 
 public interface IVehicle extends IMovable {
 
@@ -8,6 +8,7 @@ public interface IVehicle extends IMovable {
     public IService getService();
     public IStatistics getStatistics();
     public void setCompany(ITaxiCompany company);
+    public void setDriver(IDriver driver);
     public void pickService(IService service);
     public void startService();
     public void endService();
@@ -17,5 +18,7 @@ public interface IVehicle extends IMovable {
     public double calculateCost();
     public String toString();
     public IDriver getDriver();
+    public boolean isSharing();
+    public VehicleStatus getStatus();
     
 }

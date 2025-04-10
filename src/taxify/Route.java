@@ -1,4 +1,4 @@
-package taxify.functionality;
+package taxify;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,15 @@ public class Route implements IRoute {
     private List<ILocation> route;
     
     public Route(ILocation location, ILocation destination) {
-        this.route = setRoute(location, destination);
+        if (location.getX() == destination.getX() && location.getY() == destination.getY())
+        {
+            this.route = new ArrayList<ILocation>();
+            this.route.add(destination);
+        }
+        else
+        {
+            this.route = setRoute(location, destination);
+        }
     }
     
     @Override

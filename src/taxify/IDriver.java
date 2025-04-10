@@ -1,3 +1,5 @@
+package taxify;
+
 import java.time.LocalDate;
 
 public interface IDriver {
@@ -6,6 +8,7 @@ public interface IDriver {
     public char getGender();
     public LocalDate getBirthDate();
     public int getYearsOfExperience();
-    public float getRating();
+    public double getRating();
     public IVehicle getVehicle();
+    public void setVehicle(IVehicle vehicle);
 }

@@ -1,8 +1,6 @@
-package taxify.application;
+package taxify;
 
 import java.util.List;
-
-import taxify.application.ApplicationLibrary;
 
 public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     private ITaxiCompany company;
@@ -34,7 +32,7 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         
         for (IVehicle vehicle : this.vehicles) {            
             s = s + "\n" +
-            
+
             String.format("%-8s", vehicle.getClass().getSimpleName()) +
             String.format("%2s", vehicle.getId()) + " " +
             String.format("%2s", vehicle.getStatistics().getServices()) + " services " + 
@@ -44,7 +42,8 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             String.format("%-4s", vehicle.getStatistics().getStars()) + " stars";
         }
                 
-        System.out.println(s);        
+        System.out.println(s);
+              
     }    
 
     @Override
@@ -63,12 +62,12 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         {
             if (user.getService() == true)
                 continue;
-            if (user.isFemaleOrChild() && ApplicationLibrary.rand() % 2 == 0)
+            if (user.isFemaleOrChild() && ApplicationLibrary.rand() % 3 == 0)
             {
                 user.requestPinkService();
                 break;
             }
-            if (ApplicationLibrary.rand() % 3 == 0)
+            if (ApplicationLibrary.rand() % 5 == 0)
             {
                 user.requestSilentService();
                 break;

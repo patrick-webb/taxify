@@ -1,4 +1,4 @@
-package taxify.functionality;
+package taxify;
 
 
 public class Service implements IService {
@@ -49,7 +49,7 @@ public class Service implements IService {
     {
         return "Standard Service";
     }
-    
+
     @Override
     public String toString() {
         return this.getPickupLocation().toString() + " to " + this.getDropoffLocation().toString();

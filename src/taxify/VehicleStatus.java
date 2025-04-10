@@ -1,4 +1,4 @@
-package taxify.functionality;
+package taxify;
 
 public enum VehicleStatus {
 

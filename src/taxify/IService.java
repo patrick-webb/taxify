@@ -1,4 +1,4 @@
-package taxify.interfaces;
+package taxify;
 
 public interface IService {
 

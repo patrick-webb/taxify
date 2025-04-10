@@ -1,4 +1,4 @@
-package taxify.interfaces;
+package taxify;
 
 import java.time.LocalDate;
 
@@ -20,6 +20,6 @@ public interface IUser {
     public boolean askPermissionForShare();
     public boolean isFemale();
     public boolean isChild();
-    
+    public boolean isFemaleOrChild();
 
 }

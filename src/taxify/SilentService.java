@@ -8,7 +8,7 @@ public class SilentService extends Service {
     }
 
     @Override
-    public getServiceName()
+    public String getServiceName()
     {
         return "Silent Service";
     }

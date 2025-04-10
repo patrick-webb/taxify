@@ -1,5 +1,6 @@
-package taxify.functionality;
+package taxify;
 
+import java.util.List;
 
 public abstract class Vehicle implements IVehicle {
     private int id;
@@ -11,6 +12,7 @@ public abstract class Vehicle implements IVehicle {
     private IStatistics statistics;
     private IRoute route;
     private IDriver driver;
+    private List<IService> serviceList;
         
     public Vehicle(int id, ILocation location) {        
         this.id = id;
@@ -34,6 +36,12 @@ public abstract class Vehicle implements IVehicle {
         
         return this.location;
 
+    }
+
+    @Override
+    public VehicleStatus getStatus()
+    {
+        return this.status;
     }
 
     @Override
@@ -62,7 +70,7 @@ public abstract class Vehicle implements IVehicle {
 
     public void setDriver(IDriver driver)
     {
-        this.driver = deiver;
+        this.driver = driver;
     }
     
     @Override
@@ -124,7 +132,26 @@ public abstract class Vehicle implements IVehicle {
     public void notifyArrivalAtDropoffLocation() {
         // notify the company that the vehicle is at the drop off location and end the service
         this.company.arrivedAtDropoffLocation(this);
-        this.endService();
+        if (this.service instanceof SharedService)
+        {
+            SharedService shared = (SharedService) this.service;
+            if(!shared.isFirstLegFinished())
+            {
+                shared.updateLeg();
+                if (shared.getStars() != 0)
+                    shared.bothReviewed = true;
+                this.startService();
+                return;
+            }
+            this.statistics.updateServices();
+            if (shared.bothReviewed)
+                this.statistics.updateReviews();
+            this.endService();
+        }
+        else
+        {
+            this.endService();
+        }
      }
         
     @Override
@@ -167,6 +194,14 @@ public abstract class Vehicle implements IVehicle {
                 }        
             }
         }
+    }
+
+    @Override
+    public boolean isSharing()
+    {
+        if (this.service instanceof SharedService)
+            return true;
+        return false;
     }
 
     @Override
