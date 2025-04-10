@@ -1,4 +1,5 @@
-package taxify;
+package taxify.functionality;
+
 
 public class Service implements IService {
     private IUser user;
@@ -41,6 +42,12 @@ public class Service implements IService {
     @Override
     public int calculateDistance() {
         return Math.abs(this.pickup.getX() - this.dropoff.getX()) + Math.abs(this.pickup.getY() - this.dropoff.getY());
+    }
+
+    @Override
+    public String getServiceName()
+    {
+        return "Standard Service";
     }
     
     @Override

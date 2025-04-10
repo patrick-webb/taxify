@@ -1,7 +1,8 @@
-package taxify;
+package taxify.functionality;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Route implements IRoute {
     private List<ILocation> route;

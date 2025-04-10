@@ -1,4 +1,4 @@
-package taxify;
+package taxify.interfaces;
 
 public interface IVehicle extends IMovable {
 
@@ -16,5 +16,6 @@ public interface IVehicle extends IMovable {
     public boolean isFree();
     public double calculateCost();
     public String toString();
+    public IDriver getDriver();
     
 }

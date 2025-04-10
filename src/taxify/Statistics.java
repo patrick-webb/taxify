@@ -1,4 +1,5 @@
-package taxify;
+package taxify.functionality;
+
 
 public class Statistics implements IStatistics {
     private int services;

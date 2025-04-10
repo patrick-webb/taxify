@@ -1,11 +1,12 @@
-package taxify;
+package taxify.application;
 
 import java.util.Random;
 
 public class ApplicationLibrary {
     public static final int MINIMUM_DISTANCE = 3;
     private static final int MAP_WIDTH = 10;
-    private static final int MAP_HEIGHT = 10;    
+    private static final int MAP_HEIGHT = 10;
+    public static final int MAXIMUM_SHARE_DISTANCE = 100;   
 
     public static int rand() {
         Random random = new Random();
@@ -38,4 +39,5 @@ public class ApplicationLibrary {
             
         return destination;
     }
+ 
 }

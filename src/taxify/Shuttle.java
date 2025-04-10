@@ -1,4 +1,4 @@
-package taxify;
+package taxify.functionality;
 
 public class Shuttle extends Vehicle {
     private double rate = 1.5;

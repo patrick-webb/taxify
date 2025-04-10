@@ -1,4 +1,4 @@
-package taxify;
+package taxify.interfaces;
 
 public interface IMovable {
 

@@ -1,4 +1,4 @@
-package taxify;
+package taxify.functionality;
 
 
 public abstract class Vehicle implements IVehicle {
@@ -10,6 +10,7 @@ public abstract class Vehicle implements IVehicle {
     private ILocation destination;
     private IStatistics statistics;
     private IRoute route;
+    private IDriver driver;
         
     public Vehicle(int id, ILocation location) {        
         this.id = id;
@@ -52,6 +53,16 @@ public abstract class Vehicle implements IVehicle {
         
         return this.statistics;
 
+    }
+
+    public IDriver getDriver()
+    {
+        return this.driver;
+    }
+
+    public void setDriver(IDriver driver)
+    {
+        this.driver = deiver;
     }
     
     @Override

@@ -1,6 +1,8 @@
-package taxify;
+package taxify.application;
 
 import java.util.List;
+
+import taxify.application.ApplicationLibrary;
 
 public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     private ITaxiCompany company;
@@ -59,11 +61,20 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         // finds an available user and requests a service to the Taxi Company
         for (IUser user : this.users)
         {
-            if (user.getService() == false)
+            if (user.getService() == true)
+                continue;
+            if (user.isFemaleOrChild() && ApplicationLibrary.rand() % 2 == 0)
             {
-                user.requestService();
+                user.requestPinkService();
                 break;
             }
+            if (ApplicationLibrary.rand() % 3 == 0)
+            {
+                user.requestSilentService();
+                break;
+            }
+            user.requestService();
+            break;
         }
     }
     

@@ -1,10 +1,11 @@
-package taxify;
+package taxify.application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import taxify.application.ApplicationLibrary;
 
 public class TestProgram {
 
@@ -32,7 +33,10 @@ public class TestProgram {
             else
                 gender = 'f';
 
-            LocalDate date = LocalDate.ofYearDay(2000, 30);
+            if (ApplicationLibrary.rand() % 3 == 0)
+                LocalDate date  = LocalDate.ofYearDay(2010, 30);
+            else
+                LocalDate date = LocalDate.ofYearDay(2000, 30);
 
             IUser user = new User(i, firstName, lastName, gender, date);
             userList.add(user);
@@ -42,6 +46,12 @@ public class TestProgram {
         {
             ILocation location = ApplicationLibrary.randomLocation();
 
+            char gender;
+            if (i % 2 == 0)
+                gender = 'm';
+            else
+            IDriver driver = new Driver(firstNames[random.nextInt(10)], lastNames[random.nextInt(10)], gender, random.next(10));
+
             IVehicle vehicle;
 
             if (i % 3 == 0)
@@ -49,6 +59,8 @@ public class TestProgram {
             else
                 vehicle = new Taxi(i, location);
 
+            vehicle.setDriver(driver);
+            driver.setVehicle(vehicle);
             vehicleList.add(vehicle);
         }
 
@@ -61,7 +73,6 @@ public class TestProgram {
             
         while (sim.getTotalServices() > 0)
         {
-            int totalServices = sim.getTotalServices();
 
             if (random.nextInt(100) < 25)
                 sim.requestService();

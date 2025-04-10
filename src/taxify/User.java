@@ -1,6 +1,9 @@
-package taxify;
+package taxify.functionality;
 
 import java.time.LocalDate;
+import java.time.Period;
+
+import taxify.application.ApplicationLibrary;
 
 public class User implements IUser {
     private int id;
@@ -64,6 +67,20 @@ public class User implements IUser {
     public void requestService() {
         this.company.provideService(this.id);
     }
+
+    @Override
+    public void requestSilentService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin)
+        this.company.provideSilentService(this.id, origin, destination);
+    }
+
+    @Override
+    public void requestPinkService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin)
+        this.company.providePinkService(this.id, origin, destination);
+    }
     
     @Override
     public void rateService(IService service) {
@@ -72,6 +89,34 @@ public class User implements IUser {
         if (ApplicationLibrary.rand() % 2 == 0) {
             service.setStars(ApplicationLibrary.rand(5) + 1);
         }
+    }
+
+    @Override
+    public boolean isFemale()
+    {
+        if (this.getGender().equals('f'))
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean isChild()
+    {
+        LocalDate currentDay = LocalDate.now();
+        Period timeBetween = Period.between(this.getBirthDate(), currentDay)
+        int age = timeBetween.getYears();
+
+        if (age < 18)
+            return true;
+        return false;
+    }
+
+    @Override
+    public boolean isFemaleOrChild()
+    {
+        if (this.isFemale() || this.isChild())
+            return true;
+        return false;
     }
     
     @Override

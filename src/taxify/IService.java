@@ -1,4 +1,4 @@
-package taxify;
+package taxify.interfaces;
 
 public interface IService {
 
@@ -9,5 +9,6 @@ public interface IService {
     public void setStars(int stars);
     public int calculateDistance();
     public String toString();
+    public String getServiceName();
     
 }

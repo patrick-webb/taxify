@@ -1,4 +1,4 @@
-package taxify;
+package taxify.application;
 
 public interface IApplicationSimulator {
 

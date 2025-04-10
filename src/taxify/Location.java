@@ -1,4 +1,5 @@
-package taxify;
+package taxify.functionality;
+
 
 public class Location implements ILocation {
     private int x;
