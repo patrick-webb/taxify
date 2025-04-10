@@ -206,6 +206,8 @@ public abstract class Vehicle implements IVehicle {
 
     @Override
     public double calculateCost() {
+        if (this.service instanceof SharedService)
+            return .5 * this.service.calculateDistance();
         return this.service.calculateDistance();
     }
 

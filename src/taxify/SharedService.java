@@ -19,13 +19,13 @@ public class SharedService implements IService {
     {
         if (finishedFirstleg)
         {
-            return Math.abs(this.service2.getPickupLocation().getX() - this.service2.getDropoffLocation().getX())
-                 + Math.abs(this.service2.getPickupLocation().getY() - this.service2.getDropoffLocation().getY());
+            return (Math.abs(this.service2.getPickupLocation().getX() - this.service2.getDropoffLocation().getX())
+                 + Math.abs(this.service2.getPickupLocation().getY() - this.service2.getDropoffLocation().getY()) ) / 1;
         }
         else
         {
-            return Math.abs(this.service2.getPickupLocation().getX() - this.service2.getDropoffLocation().getX())
-                 + Math.abs(this.service2.getPickupLocation().getY() - this.service2.getDropoffLocation().getY());
+            return (Math.abs(this.service2.getPickupLocation().getX() - this.service2.getDropoffLocation().getX())
+                 + Math.abs(this.service2.getPickupLocation().getY() - this.service2.getDropoffLocation().getY())) / 1;
         }
     }
 
