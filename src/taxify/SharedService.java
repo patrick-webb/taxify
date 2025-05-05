@@ -3,9 +3,12 @@ package taxify;
 public class SharedService implements IService {
     private IService service1;
     private IService service2;
-    private boolean finishedFirstleg;
-    private boolean firstLegStarted = false;
+    private boolean finishedFirstleg = false;
+    private boolean firstUserPickedUp = false;
+    public boolean bothUsersPickedUp = false;
     private int stars;
+    public int firstStars = 0;
+    public boolean firstReviewed = false;
     public boolean bothReviewed = false;
 
     public SharedService(IService service1, IService service2)
@@ -24,14 +27,19 @@ public class SharedService implements IService {
         }
         else
         {
-            return (Math.abs(this.service2.getPickupLocation().getX() - this.service2.getDropoffLocation().getX())
-                 + Math.abs(this.service2.getPickupLocation().getY() - this.service2.getDropoffLocation().getY())) / 1;
+            return (Math.abs(this.service1.getPickupLocation().getX() - this.service1.getDropoffLocation().getX())
+                 + Math.abs(this.service1.getPickupLocation().getY() - this.service1.getDropoffLocation().getY())) / 1;
         }
     }
 
     @Override
     public void setStars(int stars)
     {
+        if (!finishedFirstleg) {
+            this.firstStars = stars;
+            this.firstReviewed = true;
+            return;
+        }
         this.stars += stars;
     }
 
@@ -55,9 +63,9 @@ public class SharedService implements IService {
         this.finishedFirstleg = true;
     }
 
-    public void updateFirstLegStarted()
+    public void updateFirstUserPickedUp()
     {
-        this.firstLegStarted = true;
+        this.firstUserPickedUp = true;
     }
 
     public boolean isFirstLegFinished()
@@ -65,17 +73,15 @@ public class SharedService implements IService {
         return finishedFirstleg;
     }
 
-    public boolean isFirstLegStarted()
+    public boolean isFirstUserPickedUp()
     {
-        return firstLegStarted;
+        return firstUserPickedUp;
     }
 
     public ILocation getPickupLocation()
     {
-        if (this.isFirstLegStarted())
-        {
+        if (this.isFirstUserPickedUp())
             return service2.getPickupLocation();
-        }
         return service1.getPickupLocation();
     }
 
@@ -94,9 +100,9 @@ public class SharedService implements IService {
 
     public String toString()
     {
-        if (this.isFirstLegStarted())
+        if (this.isFirstUserPickedUp())
             return this.service2.getPickupLocation().toString() + " to " + service1.getDropoffLocation().toString() + " and " + service2.getDropoffLocation().toString();
         else
-        return this.service1.getPickupLocation().toString() + " and " + this.service2.getPickupLocation().toString() + " to " + service1.getDropoffLocation().toString() + " and " + service2.getDropoffLocation().toString();
+            return this.service1.getPickupLocation().toString() + " and " + this.service2.getPickupLocation().toString() + " to " + service1.getDropoffLocation().toString() + " and " + service2.getDropoffLocation().toString();
     }
 }

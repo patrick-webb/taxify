@@ -20,5 +20,10 @@ public class ServiceFactory {
     {
         return new SharedService(service1, service2);
     }
+
+    public static IService createMicroService(IUser user, ILocation pickup, ILocation dropoff)
+    {
+        return new MicroService(user, pickup, dropoff);
+    }
 }
 

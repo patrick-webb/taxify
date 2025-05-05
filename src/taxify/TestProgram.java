@@ -11,8 +11,9 @@ public class TestProgram {
         Random random = new Random();
 
         int beginningServices = 5;
-        int userAmount = random.nextInt(10,16);
-        int vehicleAmount = random.nextInt(5,11);
+        int userAmount = random.nextInt(10,15);
+        int vehicleAmount = random.nextInt(6, 12);
+        int microVehicleAmount = random.nextInt(7,9);
         
         List<IUser> userList = new ArrayList<IUser>();
         List<IVehicle> vehicleList = new ArrayList<IVehicle>();
@@ -66,8 +67,19 @@ public class TestProgram {
             vehicleList.add(vehicle);
         }
 
-        TaxiCompany company = new TaxiCompany("Taxify", userList, vehicleList);
-        ApplicationSimulator sim = new ApplicationSimulator(company, userList, vehicleList);
+        List<IMicroVehicle> microMobilityVehicles = new ArrayList<IMicroVehicle>(); 
+        for (int i = 1; i <= microVehicleAmount; i++) { 
+            IMicroVehicle microMobilityVehicle; 
+            if (i % 2 == 0) 
+                microMobilityVehicle = new Bike(i, ApplicationLibrary.randomLocation()); 
+            else
+                microMobilityVehicle = new Scooter(i , ApplicationLibrary.randomLocation());
+
+            microMobilityVehicles.add(microMobilityVehicle); 
+        }
+
+        TaxiCompany company = new TaxiCompany("Taxify", userList, vehicleList, microMobilityVehicles);
+        ApplicationSimulator sim = new ApplicationSimulator(company, userList, vehicleList, microMobilityVehicles);
         company.addObserver(sim);
 
         for (int i = 0; i < beginningServices; i++)
@@ -75,16 +87,17 @@ public class TestProgram {
             
         while (sim.getTotalServices() > 0)
         {
-
-            if (random.nextInt(100) < 25)
+            if (random.nextInt(100) < 50)
                 sim.requestService();
-
+            
             sim.update();
+            
         }
 
         System.out.println();
         System.out.println("Amount of Users " + String.valueOf(userAmount) + ".");
         System.out.println("Amount of Vehicles " + String.valueOf(vehicleAmount) + ".");
+        System.out.println("Amount of Micro Vehicles " + microVehicleAmount + ".");
         sim.showStatistics();
 
 

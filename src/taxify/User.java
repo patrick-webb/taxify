@@ -69,6 +69,14 @@ public class User implements IUser {
     }
 
     @Override
+    public void requestMicroService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin);
+        this.company.provideMicroService(this.id, origin, destination);
+    
+    }
+
+    @Override
     public void requestSilentService() {
         ILocation origin = ApplicationLibrary.randomLocation();
         ILocation destination = ApplicationLibrary.randomLocation(origin);
@@ -90,6 +98,7 @@ public class User implements IUser {
             service.setStars(ApplicationLibrary.rand(5) + 1);
         }
     }
+
 
     @Override
     public boolean isFemale()

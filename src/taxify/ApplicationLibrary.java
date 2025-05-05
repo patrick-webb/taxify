@@ -39,5 +39,12 @@ public class ApplicationLibrary {
             
         return destination;
     }
+
+    public static boolean locationsEqual(ILocation location1, ILocation location2)
+    {
+        if (location1.getX() == location2.getX() && location1.getY() == location2.getY())
+            return true;
+        return false;
+    }
  
 }

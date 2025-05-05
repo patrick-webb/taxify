@@ -2,6 +2,6 @@ package taxify;
 
 public enum VehicleStatus {
 
-    FREE, PICKUP, SERVICE
+    FREE, PICKUP, SERVICE, BOOKED
 
 }

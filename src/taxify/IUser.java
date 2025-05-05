@@ -15,6 +15,7 @@ public interface IUser {
     public void requestService();
     public void requestPinkService();
     public void requestSilentService();
+    public void requestMicroService();
     public void rateService(IService service);
     public String toString();
     public boolean askPermissionForShare();
